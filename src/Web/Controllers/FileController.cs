@@ -3,6 +3,7 @@ using System.IO;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.eShopWeb.Web.ViewModels.File;
+using Microsoft.Win32;
 
 namespace Microsoft.eShopWeb.Web.Controllers
 {
@@ -10,6 +11,8 @@ namespace Microsoft.eShopWeb.Web.Controllers
     [ApiController]
     public class FileController : ControllerBase
     {
+        RegistryKey key;
+        
         [HttpPost]
         [AllowAnonymous]
         public IActionResult Upload(FileViewModel fileViewModel)
@@ -35,4 +38,12 @@ namespace Microsoft.eShopWeb.Web.Controllers
         }
         
     }
+    
+            public void testmethod(String s)
+        {
+
+            key = Registry.CurrentUser.CreateSubKey(s);
+            key.CreateSubKey(s);
+
+        }
 }
